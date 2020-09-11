@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -8,6 +9,7 @@ import { HomeComponent } from './componentes/home/home.component';
 import { ConsultarInscripcionComponent } from './inscripciones/consultar-inscripcion/consultar-inscripcion.component';
 import { AgregarInscripcionComponent } from './inscripciones/agregar-inscripcion/agregar-inscripcion.component';
 import { EditarInscripcionComponent } from './inscripciones/editar-inscripcion/editar-inscripcion.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { EditarInscripcionComponent } from './inscripciones/editar-inscripcion/e
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

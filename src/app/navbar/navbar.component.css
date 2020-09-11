@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-.bg-ud {
+
+.bg-ud-nav {
     background: #4c1818;
-  }
-  
+}
+
+.btn-nav-session {
+    position: absolute;
+    right: 0;
+}
