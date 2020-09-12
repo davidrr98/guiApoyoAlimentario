@@ -3,6 +3,8 @@ import { PeriodoModel } from '../../modelos/perido.model'
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
+import { PeriodosService} from '../../servicios/periodos.service'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-periodo',
@@ -14,13 +16,27 @@ export class PeriodoComponent implements OnInit {
   periodo = new PeriodoModel();
 
 
-  constructor() { }
+  constructor(private periodosService: PeriodosService ,
+    private route: ActivatedRoute) {
+
+    
+    
+   }
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if(id!=="nuevo"){
+      this.periodosService.getPeriodo(id)
+      .subscribe( (resp: PeriodoModel)=>{
+        this.periodo=resp;
+        this.periodo.id=id;
+      });
+    }
+    
   }
 
   guardar(form:NgForm){
-
+    console.log("entro a guardar")
     if(form.invalid){
       console.log('Formulario no valido')
       return;
@@ -38,9 +54,11 @@ export class PeriodoComponent implements OnInit {
     let peticion: Observable<any>;
     
     if(this.periodo.id){
-      //peticion = this.periodosService.actualizarperiodo(this.periodo);   
+      console.log("vamos en el componente actualizar");
+      peticion = this.periodosService.actualizar(this.periodo); 
     }else{
-      //peticion = this.periodosService.crearperiodo(this.periodo);  
+      console.log("vamos en el componente crear");
+      peticion = this.periodosService.crearPeriodo(this.periodo);
     }
 
     peticion.subscribe(resp => {

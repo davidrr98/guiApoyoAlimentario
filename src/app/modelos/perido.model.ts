@@ -1,6 +1,6 @@
 
 export class PeriodoModel{
-    id: number;
+    id: string;
     nombre: string;
     fechaInicio: Date;
     fechaFin: Date;
@@ -9,6 +9,6 @@ export class PeriodoModel{
     constructor(){
         this.fechaInicio=new Date();
         this.fechaFin=new Date();
-        this.estado="a";
+        this.estado="nuevo";  
     }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PeriodoModel } from '../../modelos/perido.model';
 /* import { HeroesService } from 'src/app/services/heroes.service'; */
 import Swal from 'sweetalert2';
+import { PeriodosService } from 'src/app/servicios/periodos.service';
 
 @Component({
   selector: 'app-periodos',
@@ -14,16 +15,17 @@ export class PeriodosComponent implements OnInit {
   cargando=true;
 
 
-  constructor() { }
+  constructor(private periodosService: PeriodosService ) { }
 
   ngOnInit(): void {
-    this.cargando=false;
-    /* this.heroesService.getHeroes()
+    this.cargando=true;
+    this.periodosService.getPeriodos()
     .subscribe( resp=>  {
-      this.heroes = resp;
+      this.periodos = resp;
       this.cargando = false;
-    }); */
+    });
   }
+
   borrarPeriodo (periodo: PeriodoModel, i: number){
     Swal.fire({
       title: '¿Está seguro?',
@@ -33,7 +35,7 @@ export class PeriodosComponent implements OnInit {
       showCancelButton: true
     }).then(resp =>{
       if( resp.value ){
-        //this.periodosService.borrarPeriodo(periodo.id).subscribe();
+        this.periodosService.borrarPeriodo(periodo.id).subscribe();
         this.periodos.splice(i,1);
       }
     });

@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<table *ngIf="!cargando && periodos.length==0" class="table mt-3">
+<table *ngIf="!cargando && periodos.length>0" class="table mt-3">
     <thead class="bg-ud-table">
         <tr>
             <th scope="col">#</th>
@@ -28,36 +28,16 @@
             <td>{{ periodo.fechaInicio }}</td>
             <td>{{ periodo.fechaFin }}</td>
             <td>
-                <label *ngIf="periodo.estado=='a'" class="badge badge-success">Vivo</label>
-                <label *ngIf="periodo.estado=='b'" class="badge badge-danger">Muerto</label>
-            </td>
-            <td>
-                <button class="btn btn-info mr-1" [routerLink]="['/periodo', periodo.id ]">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-            </button>
-                <button class="btn btn-danger " (click)="borrarPeriodo(periodo, i)">
-              <i class="fa fa-trash" aria-hidden="true"></i>
-            </button>
 
-            </td>
-        </tr>
-
-        <tr>
-            <th scope="row">0</th>
-            <td>2020-1</td>
-            <td>12/08/2020</td>
-            <td>12/12/2020}</td>
-            <td>
-                <label *ngIf="true" class="badge badge-success">Activo</label>
-                <label *ngIf="1==2" class="badge badge-danger">Inactivo</label>
+                {{ periodo.estado | titlecase }}
             </td>
             <td>
-                <button class="btn btn-warning mr-1 edit-icon">
-            <i class="fa fa-pencil " aria-hidden="true"></i>
-          </button>
-                <button (click)="borrarPeriodo('2020-1', 0)" class="btn btn-danger delete-icon ">
-            <i class="fa fa-trash" aria-hidden="true"></i>
-          </button>
+                <button *ngIf="periodo.estado!=='finalizado'" class="btn btn-info mr-1" [routerLink]="['/periodo', periodo.id ]">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+                <button *ngIf="periodo.estado==='nuevo'" class="btn btn-danger " (click)="borrarPeriodo(periodo, i)">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
 
             </td>
         </tr>
@@ -80,3 +60,7 @@
         Espere por favor
     </p>
 </div>
+
+<pre>
+    {{ periodos | json}}
+</pre>

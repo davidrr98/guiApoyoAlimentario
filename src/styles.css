@@ -21,7 +21,7 @@
     color: #212529;
     background-color: #fdfdfd;
     border-color: #e6b31c;
-    margin-bottom: 6px;
+    /* margin-bottom: 6px; */
 }
 
 .input-text-ud:focus {
