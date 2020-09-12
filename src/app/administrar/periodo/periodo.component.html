@@ -1,0 +1,63 @@
+<h1>Periodo</h1>
+
+<div class="row text-right">
+    <div class="col">
+        <button class="btn btn-danger" routerLink="/periodos">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            Regresar
+        </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="guardar( f )" #f="ngForm"> 
+            <div class="formGroup">
+                <label>ID</label>
+                <input type="number"
+                placeholder="ID periodo" 
+                [(ngModel)]="periodo.id"
+                name="id"
+                class="form-control"
+                disabled="disable">
+            <small class="form-text text-muted">Este es campo es autogenerado</small>
+            </div>
+            <div class="formGroup">
+                <label>Nombre</label>
+                <input type="text"
+                placeholder="Nombre del heroe" 
+                [(ngModel)]="periodo.nombre"
+                name="nombre"
+                class="form-control"
+                required>
+            </div>
+            <div class="formGroup">
+                <label>Fecha inicio</label>
+                <input type="date"
+                placeholder="Fecha de inicio" 
+                [(ngModel)]="periodo.fechaInicio"
+                name="fechaInicio"
+                class="form-control">
+            </div>
+            <div class="formGroup">
+                <label>Fecha fin</label>
+                <input type="date"
+                placeholder="Fecha de fin" 
+                [(ngModel)]="periodo.fechaFin"
+                name="fechaFin"
+                class="form-control">
+            </div>
+            <hr>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-primary w-25">
+                <i class="fas fa-save    "></i>
+                Guardar
+              </button>
+              
+            </div>
+        </form>
+    </div>
+</div>
+<pre>
+    {{periodo | json}}
+</pre>
