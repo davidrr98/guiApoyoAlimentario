@@ -45,7 +45,7 @@
                     <a class="dropdown-item text-light bg-ud" href="#">Periodo</a>
                 </div>
             </li>
-            <li class="nav-item dropdown" tabindex="-1" routerLinkActive="active">
+            <li *ngIf="administrador" class="nav-item dropdown" tabindex="-1" routerLinkActive="active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Administración
         </a>

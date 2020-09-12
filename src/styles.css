@@ -6,18 +6,41 @@
     color: #4c1818;
     border-color: #4c1818;
     background: white;
+    margin-top: 8px;
+    margin-bottom: 2px;
 }
 
 .bg-ud:hover {
     background: #3d1414;
 }
 
+
+/* fffcf2 , fdfcf6, dfd6ba*/
+
 .input-text-ud {
-    border-color: #be951a;
+    color: #212529;
+    background-color: #fdfdfd;
+    border-color: #e6b31c;
+    margin-bottom: 6px;
+}
+
+.input-text-ud:focus {
+    background-color: #fff4e0;
+    box-shadow: 0 3px 3px rgba(229, 174, 23, 0.075)inset, 0 0 12px rgba(255, 208, 0, 0.6);
+    border-color: #e6b31c;
+    border: 0;
+}
+
+.input-text-ud:disabled {
+    background-color: #e0d6bb83;
+}
+
+.input-text-ud::placeholder {
+    color: #856404;
 }
 
 .form-control-ud {
-    border-color: #be951a;
+    border-color: #e6b31c;
 }
 
 .text-color-ud {
@@ -32,4 +55,46 @@
 
 .bg-ud-yell:hover {
     background: #be951a;
+}
+
+.back-button {
+    color: whitesmoke;
+    background-color: #7a1616;
+    border-color: #7a1616;
+}
+
+.back-button:hover {
+    color: whitesmoke;
+    background: #691717;
+}
+
+.bg-ud-table {
+    background: #4c1818;
+    color: whitesmoke;
+}
+
+.bg-ud-table-cell {
+    color: #212529;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.edit-icon {
+    color: #fff3cd;
+    background-color: #be951a;
+    border-color: #be951a;
+}
+
+.edit-icon:hover {
+    background: #a1801b;
+}
+
+.delete-icon {
+    color: #ffe6e6;
+    background-color: #7a1616;
+    border-color: #7a1616;
+}
+
+.delete-icon:hover {
+    background: #691717;
 }

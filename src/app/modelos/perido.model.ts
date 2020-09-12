@@ -9,5 +9,6 @@ export class PeriodoModel{
     constructor(){
         this.fechaInicio=new Date();
         this.fechaFin=new Date();
+        this.estado="a";
     }
 }
