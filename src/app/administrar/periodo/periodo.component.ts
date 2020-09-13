@@ -38,7 +38,9 @@ export class PeriodoComponent implements OnInit {
   guardar(form:NgForm){
     console.log("entro a guardar")
     if(form.invalid){
-      console.log('Formulario no valido')
+      Object.values(form.controls).forEach(control =>{
+        control.markAsTouched();
+      });
       return;
     }
 

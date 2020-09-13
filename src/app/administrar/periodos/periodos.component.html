@@ -1,15 +1,6 @@
 <h1>Listado periodos</h1>
 <hr>
 
-<div class="row">
-    <div class="col text-right">
-        <button class="btn btn-warning" routerLink="/periodo/nuevo">
-            <i class="fa fa-plus"></i>
-            Agregar
-        </button>
-    </div>
-</div>
-
 <table *ngIf="!cargando && periodos.length>0" class="table mt-3">
     <thead class="bg-ud-table">
         <tr>
@@ -59,6 +50,15 @@
     <p class="mb-0">
         Espere por favor
     </p>
+</div>
+
+<div class="row">
+    <div class="col text-right">
+        <button class="btn btn-warning btn-block" routerLink="/periodo/nuevo">
+            <i class="fa fa-plus"></i>
+            Agregar periodo
+        </button>
+    </div>
 </div>
 
 <pre>

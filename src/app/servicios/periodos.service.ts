@@ -20,7 +20,6 @@ export class PeriodosService {
     );
   }
   actualizar (periodo :PeriodoModel){
-    console.log("vamos en el servicio");
     const periodoTemp ={
       ...periodo
     };
@@ -34,6 +33,12 @@ export class PeriodosService {
   }
   getPeriodo( id:string){
     return this.http.get(`${ this.url}/periodos/${ id }.json`);
+  }
+  getPeriodoNuevo(){
+    return this.http.get(`${ this.url}/periodos.json`)
+    .pipe(
+      map( this.seleccionarPeriodoNuevo )
+    );
   }
 
   
@@ -60,5 +65,18 @@ export class PeriodosService {
 
     return periodos;
 
+  }
+
+  private seleccionarPeriodoNuevo (periodosObj: object) :PeriodoModel {
+    var periodoR : PeriodoModel;
+    if ( periodosObj ===null) { return null;}
+    Object.keys( periodosObj).forEach ( key => {
+      const periodo: PeriodoModel =periodosObj[key];
+      periodo.id=key;
+      if(periodo.estado==="nuevo"){
+        periodoR = periodo;
+      }
+    });
+    return periodoR;
   }
 }

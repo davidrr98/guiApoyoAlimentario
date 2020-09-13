@@ -1,0 +1,22 @@
+<h1>Cargar archivo inscripciones {{ periodo.nombre }}</h1>
+<hr>
+<br>
+<p>El archivo debe estar exportado en formato csv</p>
+<form>
+    <div class="form-group custom-file bg-online-ud">
+        <input type="file" class="form-control input-text-ud" >
+    </div>
+    <br>
+    <br>
+    
+    <div class="form-group">
+        <button type="button" (click)="guardar()" class="btn btn-warning btn-block form-control">
+            <i class="fas fa-save    "></i>
+            Cargar datos
+        </button>
+    
+    </div>
+</form>
+{{ periodo | json }}
+
+
