@@ -1,0 +1,223 @@
+<div class="container text-center pt-2">
+    <div class="row justify-content-md-center">
+        <h2 class="">
+            Agregar Inscripción
+        </h2>
+        <button class="btn back-button ml-5 mr-n5" routerLink="/inscripciones">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            Regresar
+        </button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col">
+        <!-- guardar( f ) -->
+        <form (ngSubmit)="guardar(  )" #f="ngForm">
+
+            <div class="form-group">
+
+                <label class="label-color-ud"> 
+                    <i class="fas fa-history label-color-ud mr-1"></i>
+                    Periodo
+                </label>
+
+                <input type="text" class="form-control input-text-ud" placeholder="Periodo de Inscripcion" name="periodo" [class.is-invalid]="periodoNoValido">
+                <small *ngIf="periodoNoValido" class="text-danger">
+                    El periodo debe tener 6 caracteres
+                </small>
+
+            </div>
+
+            <div class="form-group">
+                <label class="label-color-ud"> 
+                        <i class="fas fa-user label-color-ud mr-1"></i>
+                        Nombres / Apellidos
+                </label>
+                <input type="text" class="form-control input-text-ud mb-2" placeholder="Nombres" name="nombres" [class.is-invalid]="nombreNoValido">
+                <small *ngIf="nombreNoValido" class="text-danger">
+                    El nombre debe tener 5 letras
+                </small>
+                <input type="text" class="form-control input-text-ud" placeholder="Apellidos" name="apellidos" [class.is-invalid]="apellidoNoValido">
+                <small *ngIf="apellidoNoValido" class="text-danger">
+                    El apellido debe tener 5 letras
+                </small>
+            </div>
+
+            <div class="form-group">
+
+                <label class="label-color-ud"> 
+                    <i class="fa fa-barcode label-color-ud mr-1"></i>
+                    Codigo
+                </label>
+
+                <input type="text" class="form-control input-text-ud" placeholder="Codigo del Estudiante" name="codigo" [class.is-invalid]="codigoNoValido">
+                <small *ngIf="codigoNoValido" class="text-danger">
+                    El Codigo debe tener 11 letras
+                </small>
+
+            </div>
+
+            <div class="form-group">
+                <label class="label-color-ud mr-1">
+                    <i class="fas fa-envelope label-color-ud mr-1"></i>
+                    Correo
+                </label>
+
+                <input class="form-control input-text-ud" type="email" placeholder="Correo electrónico" name="correo" [class.is-invalid]="correoNoValido">
+                <small *ngIf="correoNoValido" class="text-danger">
+                    Debe ingresar un correo obligatorio
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label class="label-color-ud mr-1">
+                        <i class="fas fa-id-card label-color-ud mr-1"></i>
+                        Documento
+                    </label>
+
+
+
+                <input class="form-control input-text-ud" type="text" placeholder="Documento de Identidad." name="documento" [class.is-invalid]="documentoNoValido">
+                <small *ngIf="documentoNoValido" class="text-danger">
+                    Debe ingresar un documento obligatorio
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label class="label-color-ud mr-1">
+                        <i class="fas fa-university label-color-ud mr-1"></i>
+                        Facultad
+                    </label>
+
+
+                <input class="form-control input-text-ud" type="text" placeholder="Facultad" name="facultad" [class.is-invalid]="facultadNoValido">
+                <small *ngIf="facultadNoValido" class="text-danger">
+                    Debe ingresar una facultad obligatoria
+                </small>
+            </div>
+            <!--     </div>
+
+            <div class="form-group row justify-content-md-center"> -->
+
+            <div class="form-group">
+                <label class="label-color-ud mr-1">
+                        <i class="fas fa-graduation-cap label-color-ud mr-1"></i>
+                        Carrera
+                    </label>
+
+
+                <input class="form-control input-text-ud" type="text" placeholder="Carrera" name="carrera" [class.is-invalid]="carreraNoValido">
+                <small *ngIf="carreraNoValido" class="text-danger">
+                    Debe ingresar un carrera obligatoria
+                </small>
+            </div>
+
+
+
+
+            <!--  Codigo - Nombre - Apellido - Correo - Documento - Facultad - Proyecto - estrato - la localidad - barrio - direccion -  - telefono -->
+
+
+            <div class="form-group">
+                <label class="label-color-ud mr-1">
+                        <i class="fas fa-money-check-alt label-color-ud mr-1"></i>
+                        Estrato
+                    </label>
+
+
+                <input class="form-control input-text-ud" type="text" placeholder="Estrato" name="estrato" [class.is-invalid]="estratoNoValido">
+                <small *ngIf="estratoNoValido" class="text-danger">
+                    Debe ingresar un estrato obligatorio
+                </small>
+            </div>
+            <!--     </div>
+
+            <div class="form-group row justify-content-md-center"> -->
+
+            <div class="form-group">
+                <label class="label-color-ud mr-1">
+                        <i class="fas fa-phone label-color-ud mr-1"></i>
+                        Telefono
+                    </label>
+
+
+                <input class="form-control input-text-ud" type="text" placeholder="Telefono" name="telefono" [class.is-invalid]="telefonoNoValido">
+                <small *ngIf="telefonoNoValido" class="text-danger">
+                    Debe ingresar un telefono obligatorio
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label class="label-color-ud mr-1">
+                        <i class="fas fa-gopuram label-color-ud mr-1"></i>
+                        Barrio
+                </label>
+
+
+                <input class="form-control input-text-ud" type="text" placeholder="Barrio" name="barrio" [class.is-invalid]="barrioNoValido">
+                <small *ngIf="barrioNoValido" class="text-danger">
+                        Debe ingresar un barrio obligatorio
+                </small>
+            </div>
+            <!--     </div>
+
+
+            <div class="form-group form-inline row justify-content-md-center"> -->
+
+            <div class="form-group">
+                <label class="label-color-ud mr-1">
+                <i class="fas fa-map-signs label-color-ud mr-1"></i>
+                    Localidad
+                </label>
+
+                <input class="form-control input-text-ud" type="text" placeholder="Localidad" name="localidad" [class.is-invalid]="localidadNoValido">
+                <small *ngIf="localidadNoValido" class="text-danger">
+                    Debe ingresar una localidad obligatoria
+                </small>
+            </div>
+
+
+            <div class="form-group">
+                <label class="label-color-ud mr-1">
+                    <i class="fas fa-map-marker-alt label-color-ud mr-1"></i>
+                    Direccion
+                </label>
+                <input type="text" class="form-control input-text-ud" placeholder="Dirección" name="direccion" [class.is-invalid]="direccionNoValido">
+                <small *ngIf="direccionNoValido" class="text-danger">
+                    Debe ingresar una direccion obligatoria
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label class="label-color-ud mr-1">
+                    <i class="fas fa-city label-color-ud mr-1"></i>
+                    Ciudad
+                </label>
+                <input type="text" class="form-control input-text-ud" placeholder="Ciudad" name="ciudad" [class.is-invalid]="ciudadNoValido">
+                <small *ngIf="ciudadNoValido" class="text-danger">
+                    Debe ingresar una ciudad obligatoria
+                </small>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-warning btn-block">
+                <i class="fas fa-save"></i>
+                Guardar
+              </button>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<hr>
+<pre>
+  Estado del formulario: {{ forma.valid }}
+  <br>
+  Status: {{ forma.status}}
+</pre>
+<pre>
+  {{forma.value | json}}
+</pre>

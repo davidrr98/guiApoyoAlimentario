@@ -4,11 +4,11 @@ import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@ang
 
 
 @Component({
-  selector: 'app-agregar-inscripcion',
-  templateUrl: './agregar-inscripcion.component.html',
-  styleUrls: ['./agregar-inscripcion.component.css']
+  selector: 'app-inscripcion',
+  templateUrl: './inscripcion.component.html',
+  styleUrls: ['./inscripcion.component.css']
 })
-export class AgregarInscripcionComponent implements OnInit {
+export class InscripcionComponent implements OnInit {
 
   forma: FormGroup;
 
@@ -23,8 +23,8 @@ export class AgregarInscripcionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get pasatiempos() {
-    return this.forma.get('pasatiempos') as FormArray;
+  get periodoNoValido() {
+    return this.forma.get('periodo').invalid && this.forma.get('periodo').touched;
   }
 
   get nombreNoValido() {
@@ -47,11 +47,11 @@ export class AgregarInscripcionComponent implements OnInit {
     return this.forma.get('documento').invalid && this.forma.get('documento').touched;
   }
 
-  get callesNoValido() {
-    return this.forma.get('direccion.calles').invalid && this.forma.get('direccion.calles').touched;
+  get direccionNoValido() {
+    return this.forma.get('direccion').invalid && this.forma.get('direccion').touched;
   }
   get ciudadNoValido() {
-    return this.forma.get('direccion.ciudad').invalid && this.forma.get('direccion.ciudad').touched;
+    return this.forma.get('ciudad').invalid && this.forma.get('ciudad').touched;
   }
   get facultadNoValido() {
     return this.forma.get('facultad').invalid && this.forma.get('facultad').touched;
@@ -80,7 +80,7 @@ export class AgregarInscripcionComponent implements OnInit {
   crearFormulario() {
 
     this.forma = this.fb.group({
-
+      periodo: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
       nombre: ['', [Validators.required, Validators.minLength(5)]],
       apellido: ['', [Validators.required, Validators.minLength(5)]],
       codigo: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
@@ -92,11 +92,8 @@ export class AgregarInscripcionComponent implements OnInit {
       localidad: ['', Validators.required],
       barrio: ['', Validators.required],
       telefono: ['', Validators.required],
-      direccion: this.fb.group({
-        calles: ['', Validators.required],
-        ciudad: ['', Validators.required],
-      }),
-      pasatiempos: this.fb.array([]),
+      direccion: ['', Validators.required],
+      ciudad: ['', Validators.required],
     },{
       //validators: this.validadores.passwordsIguales('facultad','pass2')
     });
@@ -112,9 +109,10 @@ export class AgregarInscripcionComponent implements OnInit {
   cargarDataAlFormulario() {
     //this.forma.setValue(
     this.forma.reset(
-      {
-        nombre: "",
-        apellido: "Perez",
+      { 
+        periodo: "2002-2",
+        nombres: "",
+        apellidos: "Perez",
         codigo: "",
         documento: "",
         correo: "juan@gmaii.com",
@@ -124,20 +122,10 @@ export class AgregarInscripcionComponent implements OnInit {
         localidad: "",
         barrio: "",
         telefono: "",
-        direccion: {
-          calles: "calle",
-          ciudad: "ottawa"
-        }
+        direccion: "calle",
+        ciudad: "ottawa"
       }
     );
-    ['Comer', 'Dormir'].forEach(valor => this.pasatiempos.push(this.fb.control(valor)));
-  }
-  agregarPasatiempo() {
-    this.pasatiempos.push(this.fb.control('Nuevo elemento', Validators.required));
-  }
-  borrarPasatiempo(i: number) {
-    this.pasatiempos.removeAt(i);
-
   }
 
   guardar() {

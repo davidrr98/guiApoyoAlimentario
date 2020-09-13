@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './componentes/home/home.component'
-import { ConsultarInscripcionComponent } from './inscripciones/consultar-inscripcion/consultar-inscripcion.component';
-import { AgregarInscripcionComponent } from './inscripciones/agregar-inscripcion/agregar-inscripcion.component';
-import { EditarInscripcionComponent } from './inscripciones/editar-inscripcion/editar-inscripcion.component';
+import { InscripcionesComponent } from './afiliacion/inscripciones/inscripciones.component';
+import { InscripcionComponent } from './afiliacion/inscripcion/inscripcion.component';
 import { PeriodosComponent } from './administrar/periodos/periodos.component';
 import { PeriodoComponent } from './administrar/periodo/periodo.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'inscripciones/consultar', component: ConsultarInscripcionComponent },
-  { path: 'inscripciones/agregar', component: AgregarInscripcionComponent },
-  { path: 'inscripciones/editar', component: EditarInscripcionComponent },
+  { path: 'inscripciones', component: InscripcionesComponent },
+  { path: 'inscripcion/:id', component: InscripcionComponent },
   { path: 'periodos', component: PeriodosComponent },
   { path: 'periodo/:id', component: PeriodoComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' }

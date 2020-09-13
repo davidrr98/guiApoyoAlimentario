@@ -1,0 +1,96 @@
+<div class="container text-center pt-2">
+    <h2>
+        Ver Inscripciones
+    </h2>
+</div>
+<hr>
+<!-- *ngIf="!cargando && inscripciones.length>0" -->
+<table class="table mt-3">
+    <thead class="bg-ud-table">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Codigo Est</th>
+            <th scope="col">Periodo</th>
+            <th scope="col">Opciones</th>
+            <!--             
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Facultad</th>
+            <th scope="col">Carrera</th>
+            <th scope="col">Estrato</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Barrio</th>
+            <th scope="col">Localidad</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Ciudad</th> -->
+        </tr>
+    </thead>
+    <tbody class="bg-ud-table-cell">
+        <!--   <tr *ngFor="let inscripcion of inscripciones; let i = index">
+            <th scope="row">{{ i +1 }}</th>
+            <td>{{ inscripcion.id }}</td>
+            <td>{{ inscripcion.codigo }}</td>
+            <td>{{ inscripcion.periodo }}</td>
+            <td>
+                <button *ngIf="" class="btn btn-info mr-1" [routerLink]="['/inscripcion', inscripcion.id ]">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+                <button *ngIf="" class="btn btn-danger " (click)="borrarinscripcion(inscripcion, i)">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+
+            </td>
+        </tr> -->
+
+        <tr>
+            <th scope="row"></th>
+            <td>0</td>
+            <td>20161020022</td>
+            <td>2020-1</td>
+            <td>
+                <button class="btn student-icon mr-1" title="Ver Estudiante">
+                    <i class="fa fa-user-graduate" aria-hidden="true"></i>
+                </button>
+                <button class="btn edit-icon mr-1" [routerLink]="['/inscripcion', 'nuevo']">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+                <button class="btn delete-icon ">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="col text-right">
+        <button class="btn btn-warning btn-block" routerLink="/inscripcion/nuevo">
+            <i class="fa fa-plus"></i>
+            Agregar
+        </button>
+    </div>
+</div>
+
+<div *ngIf="!cargando && inscripciones.length==0" class="alert alert-warning text-center mt-3">
+    <h3 class="alert-heading">No hay registros</h3>
+    <p>
+        <i class="fa fa-exclamation fa-2x    "></i>
+    </p>
+</div>
+<div *ngIf="!cargando" class="alert alert-info text-center mt-3">
+    <h3 class="alert-heading">Cargando</h3>
+    <p>
+        <i class="fa fa-sync-alt fa-spin fa-2x    "></i>
+    </p>
+    <p class="mb-0">
+        Espere por favor
+    </p>
+</div>
+
+<!-- <pre>
+    {{ inscripciones | json}}
+</pre> -->
