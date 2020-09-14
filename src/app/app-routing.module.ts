@@ -6,6 +6,7 @@ import { InscripcionComponent } from './afiliacion/inscripcion/inscripcion.compo
 import { PeriodosComponent } from './administrar/periodos/periodos.component';
 import { PeriodoComponent } from './administrar/periodo/periodo.component';
 import { CargarInscripcionesComponent } from './administrar/cargar-inscripciones/cargar-inscripciones.component';
+import { FechasComponent } from './administrar/fechas/fechas.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'periodos', component: PeriodosComponent },
   { path: 'periodo/:id', component: PeriodoComponent },
   { path: 'cargarInscripciones', component: CargarInscripcionesComponent },
+  { path: 'fechas', component: FechasComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' }
   
 ];

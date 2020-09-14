@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
 import { PeriodosService} from '../../servicios/periodos.service'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-periodo',
@@ -17,7 +17,8 @@ export class PeriodoComponent implements OnInit {
 
 
   constructor(private periodosService: PeriodosService ,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router) {
 
     
     
@@ -62,6 +63,7 @@ export class PeriodoComponent implements OnInit {
       console.log("vamos en el componente crear");
       peticion = this.periodosService.crearPeriodo(this.periodo);
     }
+    
 
     peticion.subscribe(resp => {
       
@@ -70,6 +72,7 @@ export class PeriodoComponent implements OnInit {
         text: 'Se actualizo correctamente',
         icon: 'success'
       });
+      this.router.navigateByUrl('/periodos');
 
     });
     

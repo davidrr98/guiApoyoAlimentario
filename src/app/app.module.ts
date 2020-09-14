@@ -13,6 +13,7 @@ import { InscripcionComponent } from './afiliacion/inscripcion/inscripcion.compo
 import { PeriodosComponent } from './administrar/periodos/periodos.component';
 import { PeriodoComponent } from './administrar/periodo/periodo.component';
 import { CargarInscripcionesComponent } from './administrar/cargar-inscripciones/cargar-inscripciones.component';
+import { FechasComponent } from './administrar/fechas/fechas.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CargarInscripcionesComponent } from './administrar/cargar-inscripciones
     InscripcionComponent,
     PeriodosComponent,
     PeriodoComponent,
-    CargarInscripcionesComponent
+    CargarInscripcionesComponent,
+    FechasComponent
   ],
   imports: [
     BrowserModule,
