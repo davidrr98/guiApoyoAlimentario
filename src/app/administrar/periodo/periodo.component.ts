@@ -37,7 +37,6 @@ export class PeriodoComponent implements OnInit {
   }
 
   guardar(form:NgForm){
-    console.log("entro a guardar")
     if(form.invalid){
       Object.values(form.controls).forEach(control =>{
         control.markAsTouched();
@@ -57,10 +56,8 @@ export class PeriodoComponent implements OnInit {
     let peticion: Observable<any>;
     
     if(this.periodo.id){
-      console.log("vamos en el componente actualizar");
       peticion = this.periodosService.actualizar(this.periodo); 
     }else{
-      console.log("vamos en el componente crear");
       peticion = this.periodosService.crearPeriodo(this.periodo);
     }
     

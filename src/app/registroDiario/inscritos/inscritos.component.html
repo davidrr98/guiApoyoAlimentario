@@ -1,0 +1,69 @@
+<div class="container text-center pt-2">
+    <div class="row justify-content-md-center">
+        <h1>
+            Registro diario <u>inscritos</u>
+        </h1>
+        <button class="btn back-button ml-5 mr-n5" routerLink="/">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            Regresar
+        </button>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="guardar( f )" #f="ngForm">
+
+            <div class="form-group">
+                <label class=" label-color-ud">
+                    <i class="fa fa-file-signature " aria-hidden="true"></i>
+                    Periodo
+                </label>
+                <input type="text" [(ngModel)]="fechaActual.periodo" name="periodo" class="form-control input-text-ud" disabled>
+            </div>
+            <!-- [class.is-invalid]="fecha.invalid && fecha.touched" -->
+            <div class="form-group">
+                <label class=" label-color-ud">
+                    <i class="fa fa-calendar-day " aria-hidden="true"></i>
+                    Fecha 
+                </label>
+                <input type="date" placeholder="Fecha a registrar" [(ngModel)]="fechaActual.fechaDia" name="fechaDia" class="form-control input-text-ud " required #fechaDia="ngModel" disabled>
+            </div>
+
+            <div class="form-group">
+                <label class=" label-color-ud">
+                    <i class="fas fa-university"></i>
+                    Sede
+                </label>
+                <!--<input type="text" placeholder="Sede en la que se va a registrar" [(ngModel)]="registroBase.sede" name="sede" class="form-control input-text-ud" #descripcion="ngModel">-->
+                <select class="custom-select input-text-ud" id="inputGroupSelect02">
+                    <option selected>Escoger Sede...</option>
+                    <option value="1">Inge</option>
+                    <option value="2">Maca</option>
+                    <option value="3">Tecno</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class=" label-color-ud">
+                    <i class="fas fa-barcode"></i>
+                    Codigo estudiante
+                </label>
+                <input type="text" placeholder="Descripcion de la fecha" [(ngModel)]="registroBase.codigo" name="codigo" class="form-control input-text-ud" #descripcion="ngModel">
+            </div>
+
+            <hr>
+            <div class="form-group">
+                <button type="submit" class="btn btn-warning btn-block">
+                    <i class="fas fa-save    "></i>
+                    Guardar
+                </button>
+
+            </div>
+            <div *ngFor="let registoAprovado of registosAprovados.reverse();" class="alert alert-warning" role="alert">
+                Se registro el estudiante <strong> {{registoAprovado}} </strong>
+            </div>
+        </form>
+    </div>
+</div>

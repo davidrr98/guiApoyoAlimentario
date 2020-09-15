@@ -22,8 +22,7 @@ export class PeriodosComponent implements OnInit {
     this.cargando=true;
     this.periodosService.getPeriodos()
     .subscribe( resp=>  {
-      this.periodos = resp;
-      this.periodos.sort();
+      this.periodos = resp.reverse();
       this.cargando = false;
       this.bntNuevo= true;  
       for (let periodo of this.periodos){

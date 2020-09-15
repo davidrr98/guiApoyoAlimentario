@@ -16,6 +16,7 @@ import { PeriodoComponent } from './administrar/periodo/periodo.component';
 import { CargarInscripcionesComponent } from './administrar/cargar-inscripciones/cargar-inscripciones.component';
 import { FechasComponent } from './administrar/fechas/fechas.component';
 import { FechaComponent } from './administrar/fecha/fecha.component';
+import { InscritosComponent } from './registroDiario/inscritos/inscritos.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { FechaComponent } from './administrar/fecha/fecha.component';
     PeriodoComponent,
     CargarInscripcionesComponent,
     FechasComponent,
-    FechaComponent
+    FechaComponent,
+    InscritosComponent
   ],
   imports: [
     BrowserModule,

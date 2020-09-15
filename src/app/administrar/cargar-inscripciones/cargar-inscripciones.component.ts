@@ -13,7 +13,7 @@ import { PeriodosService } from '../../servicios/periodos.service'
 })
 export class CargarInscripcionesComponent implements OnInit {
 
-  periodo: PeriodoModel;
+  periodo= new PeriodoModel();
   constructor(private periodosService: PeriodosService,
     private router: Router) { }
 

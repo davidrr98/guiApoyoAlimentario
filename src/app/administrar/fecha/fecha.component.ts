@@ -101,10 +101,10 @@ export class FechaComponent implements OnInit {
       return;
     } 
     if(this.fecha.id){
-      console.log("vamos en el componente actualizar");
+      
       peticion = this.fechasService.actualizar(this.fecha); 
     }else{
-      console.log("vamos en el componente crear");
+      
       this.fecha.estado="pendiente";
       peticion = this.fechasService.crearFecha(this.fecha);
     }
@@ -146,8 +146,7 @@ export class FechaComponent implements OnInit {
     for (let f of this.fechas){
       let f2 = new Date(f.fechaDia);
       if (f1.getTime() == f2.getTime()){
-        console.log("Son la misma fecha");
-        return false;
+        return false; //son la misma fecha
       }
     }
     return fechaDif;

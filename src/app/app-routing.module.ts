@@ -8,6 +8,7 @@ import { PeriodoComponent } from './administrar/periodo/periodo.component';
 import { CargarInscripcionesComponent } from './administrar/cargar-inscripciones/cargar-inscripciones.component';
 import { FechasComponent } from './administrar/fechas/fechas.component';
 import { FechaComponent } from './administrar/fecha/fecha.component';
+import { InscritosComponent } from './registroDiario/inscritos/inscritos.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'cargarInscripciones', component: CargarInscripcionesComponent },
   { path: 'fechas', component: FechasComponent },
   { path: 'fecha/:id', component: FechaComponent },
+  { path: 'registro/inscritos', component: InscritosComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' }
   
 ];
