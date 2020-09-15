@@ -1,6 +1,9 @@
-<h1>Listado periodos</h1>
+<div class="container text-center pt-2">
+    <h2>
+        Listado de Periodos
+    </h2>
+</div>
 <hr>
-
 <table *ngIf="!cargando && periodos.length>0" class="table mt-3">
     <thead class="bg-ud-table">
         <tr>
@@ -23,28 +26,22 @@
                 {{ periodo.estado | titlecase }}
             </td>
             <td>
-                <button *ngIf="periodo.estado!=='finalizado'" class="btn btn-info mr-1"
-                    [routerLink]="['/periodo', periodo.id ]" title="Editar periodo">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                <button *ngIf="periodo.estado!=='finalizado'" class="btn edit-icon mr-1" [routerLink]="['/periodo', periodo.id ]" title="Editar periodo">
+                    <i class="fa fa-pencil " aria-hidden="true"></i>
                 </button>
-                <button *ngIf="periodo.estado==='nuevo'" class="btn btn-danger " (click)="borrarPeriodo(periodo, i)"
-                    title="Borrar periodo">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
+                <button *ngIf="periodo.estado==='nuevo'" class="btn delete-icon " (click)="borrarPeriodo(periodo, i)" title="Borrar periodo">
+                    <i class="fa fa-trash " aria-hidden="true"></i>
                 </button>
-                <button *ngIf="periodo.estado==='inscripciones'" class="btn btn-success "
-                    (click)="iniciarPeriodo(periodo, i)" title="Iniciar periodo">
-                    <i class="fa fa-play" aria-hidden="true"></i>
+                <button *ngIf="periodo.estado==='inscripciones'" class="btn init-icon " (click)="iniciarPeriodo(periodo, i)" title="Iniciar periodo">
+                    <i class="fa fa-play " aria-hidden="true"></i>
                 </button>
-                <button *ngIf="periodo.estado==='activo'" class="btn" style="background-color:transparent"
-                    (click)="pausarPeriodo(periodo, i)" title="Pausar periodo">
-                    <i class="fa fa-toggle-on fa-2x" aria-hidden="true"></i>
+                <button *ngIf="periodo.estado==='activo'" class="btn label-color-ud" style="background-color:transparent" (click)="pausarPeriodo(periodo, i)" title="Pausar periodo">
+                    <i class="fa fa-toggle-on fa-2x " aria-hidden="true"></i>
                 </button>
-                <button *ngIf="periodo.estado==='inactivo'" class="btn" style="background-color:transparent"
-                    (click)="iniciarPeriodo(periodo, i)" title="Reactivar periodo">
-                    <i class="fa fa-toggle-off fa-2x" aria-hidden="true"></i>
+                <button *ngIf="periodo.estado==='inactivo'" class="btn label-color-ud" style="background-color:transparent" (click)="iniciarPeriodo(periodo, i)" title="Reactivar periodo">
+                    <i class="fa fa-toggle-off fa-2x " aria-hidden="true"></i>
                 </button>
-                <button *ngIf="periodo.estado==='activo' || periodo.estado==='inactivo'" class="btn btn-warning"
-                    (click)="finalizarPeriodo(periodo, i)" title="Finalizar periodo">
+                <button *ngIf="periodo.estado==='activo' || periodo.estado==='inactivo'" class="btn edit-icon" (click)="finalizarPeriodo(periodo, i)" title="Finalizar periodo">
                     <i class="fas fa-store-alt-slash"></i>
                 </button>
 

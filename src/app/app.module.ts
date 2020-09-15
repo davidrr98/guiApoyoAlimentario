@@ -2,6 +2,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +15,7 @@ import { PeriodosComponent } from './administrar/periodos/periodos.component';
 import { PeriodoComponent } from './administrar/periodo/periodo.component';
 import { CargarInscripcionesComponent } from './administrar/cargar-inscripciones/cargar-inscripciones.component';
 import { FechasComponent } from './administrar/fechas/fechas.component';
+import { FechaComponent } from './administrar/fecha/fecha.component';
 
 
 @NgModule({
@@ -26,13 +28,15 @@ import { FechasComponent } from './administrar/fechas/fechas.component';
     PeriodosComponent,
     PeriodoComponent,
     CargarInscripcionesComponent,
-    FechasComponent
+    FechasComponent,
+    FechaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    CommonModule,
     HttpClientModule
   ],
   providers: [],

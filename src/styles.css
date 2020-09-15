@@ -91,6 +91,20 @@
     background: #18276b;
 }
 
+
+/* #28a745 */
+
+.init-icon {
+    color: #f2fff2;
+    background-color: #307030;
+    border-color: #2c552c;
+}
+
+.init-icon:hover {
+    color: #f2fff2;
+    background: #2c552c;
+}
+
 .edit-icon {
     color: #fff3cd;
     background-color: #be951a;
