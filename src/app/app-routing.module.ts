@@ -20,9 +20,8 @@ const routes: Routes = [
   { path: 'cargarInscripciones', component: CargarInscripcionesComponent },
   { path: 'fechas', component: FechasComponent },
   { path: 'fecha/:id', component: FechaComponent },
-  { path: 'registro/inscritos', component: InscritosComponent },
+  { path: 'registro/:tipo', component: InscritosComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' }
-  
 ];
 
 @NgModule({

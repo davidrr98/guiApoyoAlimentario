@@ -1,15 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'
 import { pipe } from 'rxjs';
 import { FechaModel } from 'src/app/modelos/fecha.model';
 import { RegistroInscritoModel } from 'src/app/modelos/registroInscrito.model';
+import { SedeModel } from 'src/app/modelos/sede.model';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
 import { PeriodosService } from '../../servicios/periodos.service';
 import { FechasService } from '../../servicios/fechas.service'
 import { RegistrosInscritosService } from '../../servicios/registros-inscritos.service'
-import { async } from 'rxjs/internal/scheduler/async';
+import { SedesService } from '../../servicios/sedes.service'
+
 
 @Component({
   selector: 'app-inscritos',
@@ -18,16 +20,32 @@ import { async } from 'rxjs/internal/scheduler/async';
 })
 export class InscritosComponent implements OnInit {
 
-  registosAprovados: string [] = []
+  inscritos: boolean;
+  sedesTemp: SedeModel[] = [];
+  sedesAccesso: SedeModel[] = []
+  /* sedesAccesso = ["Ingenieria","Macarena","Vivero", "Bosa"]; */
+  registosAprovados: string[] = []
   registroBase = new RegistroInscritoModel();
 
   fechaActual = new FechaModel();
 
   constructor(private fechasService: FechasService,
     private registroInscritoService: RegistrosInscritosService,
-    private router: Router) { }
+    private sedesService: SedesService,
+    private router: Router, private route: ActivatedRoute,) { }
 
   async ngOnInit() {
+    console.log("init")
+    this.inscritos = true;
+    let tipo = this.route.snapshot.paramMap.get('tipo');
+    if (tipo === "no-inscritos") {
+      this.inscritos = false;
+    } else {
+      if (tipo === "inscritos") {
+        this.inscritos = true;
+      }
+    }
+    console.log(this.inscritos);
 
     this.fechasService.getFechas()
       .subscribe(async resp => {
@@ -47,19 +65,35 @@ export class InscritosComponent implements OnInit {
           this.registroBase.codigo = "";
           this.registroBase.sede = "";
           this.registroBase.fecha = this.fechaActual.fechaDia;
-          
+
         }
       });
+
+      
+
+      this.sedesService.getSedes()
+      .subscribe( resp=>  {
+        this.sedesAccesso = resp;
+      });
+
+  }
+
+  OnChanges(){
+    console.log("cambios")
+
   }
 
   guardar(form: NgForm) {
 
-    if (form.invalid) {
+    if (form.invalid || this.sedesAccesso.length === 0) {
       Object.values(form.controls).forEach(control => {
         control.markAsTouched();
       });
       return;
     }
+    this.registroBase.sede = form.value['sede'];
+    console.log(form);
+    console.log(this.registroBase);
 
     Swal.fire({
       title: 'Espere',
@@ -71,22 +105,26 @@ export class InscritosComponent implements OnInit {
 
 
     this.registroInscritoService.crearRegistro(this.registroBase)
-    .subscribe(resp => {
-      Swal.fire({
-        title: this.registroBase.codigo,
-        text: 'Se registro el estudiante correctamente',
-        icon: 'success'
+      .subscribe(resp => {
+        Swal.fire({
+          title: this.registroBase.codigo,
+          text: 'Se registro el estudiante correctamente',
+          icon: 'success'
+        });
+        this.registosAprovados.push(this.registroBase.codigo);
+        let tempSedeTemp = this.registroBase.sede;
+        this.registroBase = new RegistroInscritoModel()
+        this.registroBase.codigo = "";
+        this.registroBase.codigo = "";
+        this.registroBase.sede = tempSedeTemp;
+        this.registroBase.fecha = this.fechaActual.fechaDia;
       });
-      this.registosAprovados.push(this.registroBase.codigo);
-      let tempSedeTemp = this.registroBase.sede;
-      this.registroBase = new RegistroInscritoModel()
-      this.registroBase.codigo="";
-      this.registroBase.codigo = "";
-      this.registroBase.sede = tempSedeTemp;
-      this.registroBase.fecha = this.fechaActual.fechaDia;        
+
+    Object.values(form.controls).forEach(control => {
+      control.markAsUntouched();
     });
 
-   
+
   }
 
 
@@ -116,6 +154,24 @@ export class InscritosComponent implements OnInit {
       return true;
     }
     return false;
+  }
+  cargarSedes() { //temporal
+    let ingenieria = new SedeModel();
+    ingenieria.id = "1";
+    ingenieria.nombre = "Ingenieria";
+
+    let macarena = new SedeModel();
+    macarena.id = "2";
+    macarena.nombre = "Macarena";
+
+    let vivero = new SedeModel();
+    vivero.id = "3";
+    vivero.nombre = "Vivero";
+
+    this.sedesAccesso.push(ingenieria);
+    this.sedesAccesso.push(macarena);
+    this.sedesAccesso.push(vivero);
+
   }
 
 }

@@ -1,7 +1,9 @@
 <div class="container text-center pt-2">
     <div class="row justify-content-md-center">
         <h1>
-            Registro diario <u>inscritos</u>
+            Registro diario
+            <u *ngIf="inscritos">inscritos</u>
+            <u *ngIf="!inscritos">no inscritos</u>
         </h1>
         <button class="btn back-button ml-5 mr-n5" routerLink="/">
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
@@ -15,42 +17,41 @@
     <div class="col">
         <form (ngSubmit)="guardar( f )" #f="ngForm">
 
-            <div class="form-group">
-                <label class=" label-color-ud">
-                    <i class="fa fa-file-signature " aria-hidden="true"></i>
-                    Periodo
-                </label>
+            <div class="form-group input-group">
+                <div class="label-color-ud input-group-prepend input-group-text">
+                    <i class="fa fa-file-signature mr-1" aria-hidden="true"></i>
+                    <span class="label-color-ud " id="inputGroup-sizing-default">Periodo</span>
+                </div>
                 <input type="text" [(ngModel)]="fechaActual.periodo" name="periodo" class="form-control input-text-ud" disabled>
             </div>
+
             <!-- [class.is-invalid]="fecha.invalid && fecha.touched" -->
-            <div class="form-group">
-                <label class=" label-color-ud">
-                    <i class="fa fa-calendar-day " aria-hidden="true"></i>
-                    Fecha 
-                </label>
+            <div class="form-group input-group">
+                <div class="label-color-ud input-group-prepend input-group-text">
+                    <i class="fa fa-calendar-day mr-1" aria-hidden="true"></i>
+                    <span class="label-color-ud " id="inputGroup-sizing-default">Fecha</span>
+                </div>
                 <input type="date" placeholder="Fecha a registrar" [(ngModel)]="fechaActual.fechaDia" name="fechaDia" class="form-control input-text-ud " required #fechaDia="ngModel" disabled>
             </div>
 
-            <div class="form-group">
-                <label class=" label-color-ud">
-                    <i class="fas fa-university"></i>
-                    Sede
-                </label>
-                <!--<input type="text" placeholder="Sede en la que se va a registrar" [(ngModel)]="registroBase.sede" name="sede" class="form-control input-text-ud" #descripcion="ngModel">-->
-                <select class="custom-select input-text-ud" id="inputGroupSelect02">
-                    <option selected>Escoger Sede...</option>
-                    <option value="1">Inge</option>
-                    <option value="2">Maca</option>
-                    <option value="3">Tecno</option>
-                </select>
+            <div class="form-group input-group">
+                <div class="label-color-ud input-group-prepend input-group-text">
+                    <i class="fas fa-university mr-1"></i>
+                    <span class="label-color-ud " id="inputGroup-sizing-default">Sede</span>
+                </div>
+                <select class="form-control custom-select input-text-ud" name="sede" [disabled]="sedesAccesso.length === 0" [class.is-invalid]="sede.invalid && sede.touched" [ngModel]="registroBase.sede" nombre="sede" required placeholder="Sede" required #sede="ngModel">
+                    <option *ngFor="let sede of sedesAccesso" [value]="sede.id">{{sede.nombre}}</option>
+                  </select>
             </div>
+            <small *ngIf="sede.invalid && sede.touched" class="form-text text-danger mt-n3 mb-2">Tienes que seleccionar un sede</small>
+            <small *ngIf="sedesAccesso.length === 0" class="form-text text-danger mt-n3 mb-2">No hay sedes disponibles</small>
 
-            <div class="form-group">
-                <label class=" label-color-ud">
-                    <i class="fas fa-barcode"></i>
-                    Codigo estudiante
-                </label>
-                <input type="text" placeholder="Descripcion de la fecha" [(ngModel)]="registroBase.codigo" name="codigo" class="form-control input-text-ud" #descripcion="ngModel">
+            <div class="form-group input-group">
+                <div class="label-color-ud input-group-prepend input-group-text">
+                    <i class="fas fa-barcode mr-1"></i>
+                    <span class="label-color-ud " id="inputGroup-sizing-default">Codigo</span>
+                </div>
+                <input class="form-control input-text-ud" type="number" name="codigo" placeholder="Codigo estudiante" [(ngModel)]="registroBase.codigo" #codigo="ngModel" [class.is-invalid]="codigo.invalid && codigo.touched" pattern="[0-9]{11}" required>
             </div>
 
             <hr>

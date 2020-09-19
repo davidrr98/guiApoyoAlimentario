@@ -70,11 +70,8 @@ export class PeriodoComponent implements OnInit {
         icon: 'success'
       });
       this.router.navigateByUrl('/periodos');
-
     });
-    
 
-    
   }
 
 }
