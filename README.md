@@ -28,12 +28,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Autors
 **[David Romero]**
-[@davidrr98]
-<davidromeror98@gmail.com>
-<br>
-**Sergio Gomez**
-[@SagLara]
-<laragsergio1803@gmail.com>
 
-![Universidad Distrital FJC!](/src/assets/images/escudo_oficial_udistrital.png "Escudo Universidad Distrital")
+[@davidrr98]
+
+<davidromeror98@gmail.com>
+
+**Sergio Gomez**<br>
+[@SagLara]<br>
+<laragsergio1803@gmail.com><br>
+
+![Universidad Distrital FJC!](/src/assets/img/escudo_oficial_udistrital.png "Escudo Universidad Distrital")
 
