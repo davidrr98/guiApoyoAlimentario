@@ -49,7 +49,7 @@ export class CargarInscripcionesComponent implements OnInit {
 
     Swal.showLoading();
 
-    this.periodo.estado = "inscripciones";
+    this.periodo.estado = "inscripci";
     this.periodosService.actualizar(this.periodo).subscribe();
     Swal.fire({
       title: this.periodo.nombre,

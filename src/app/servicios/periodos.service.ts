@@ -9,71 +9,75 @@ import { map } from 'rxjs/operators'
 export class PeriodosService {
   private url = " https://apoyo-back.firebaseio.com";
 
-  constructor( private http: HttpClient ) { }
+  constructor(private http: HttpClient) { }
 
-  crearPeriodo (periodo: PeriodoModel){
-    return this.http.post(`${ this.url}/periodos.json`, periodo)
+  crearPeriodo(periodo: PeriodoModel) {
+    /* return this.http.post(`${ this.url}/periodos.json`, periodo)
     .pipe( map( (resp :any )=> {
       periodo.id=resp.name;
       return periodo;
     })     
-    );
+    ); */
+    return this.http.post("http://localhost:8080/periodo", periodo);
+
   }
-  actualizar (periodo :PeriodoModel){
-    const periodoTemp ={
+  actualizar(periodo: PeriodoModel) {
+    console.log("se encontro a actualizar");
+    console.log(periodo);
+    const periodoTemp = {
       ...periodo
     };
-
-    delete periodoTemp.id;
-    return this.http.put(`${ this.url}/periodos/${ periodo.id }.json`, periodoTemp);   
+    return this.http.put("http://localhost:8080/periodo/edit", periodoTemp);
 
   }
-  borrarPeriodo ( id: string){
-    return this.http.delete(`${ this.url}/periodos/${ id }.json`);
+  borrarPeriodo(id: string) {
+    return this.http.delete(`http://localhost:8080/periodo?id=${id}`);
   }
-  getPeriodo( id:string){
-    return this.http.get(`${ this.url}/periodos/${ id }.json`);
+  getPeriodo(id: string) {
+    /* return this.http.get(`${ this.url}/periodos/${ id }.json`); */
+    return this.http.get(`http://localhost:8080/periodo?id=${id}`);
   }
-  getPeriodoNuevo(){
-    return this.http.get(`${ this.url}/periodos.json`)
-    .pipe(
-      map( this.seleccionarPeriodoNuevo )
-    );
+  getPeriodoNuevo() {
+    return this.http.get("http://localhost:8080/periodos")
+      .pipe(
+        map(this.seleccionarPeriodoNuevo)
+      );
   }
 
-  
 
 
-  getPeriodos(){
-    return this.http.get(`${ this.url}/periodos.json`)
+
+  getPeriodos() {
+    /* return this.http.get(`${ this.url}/periodos.json`)
     .pipe(
       map( this.crearArreglo )
-    );
+    ); */
+    return this.http.get("http://localhost:8080/periodos")
+      .pipe(
+        map(this.crearArreglo)
+      );
   }
 
-  private crearArreglo(periodosObj: object){
-    const periodos: PeriodoModel [] = [];
+  private crearArreglo(periodosObj: object) {
+    if (periodosObj === null) { return []; }
 
-    if ( periodosObj ===null) { return [];}
+    const periodos: PeriodoModel[] = [];
 
-    Object.keys( periodosObj).forEach ( key => {
-      const periodo: PeriodoModel =periodosObj[key];
-      periodo.id=key;
-
+    Object.keys(periodosObj).forEach(key => {
+      const periodo: PeriodoModel = periodosObj[key];
       periodos.push(periodo);
     });
 
     return periodos;
-
   }
 
-  private seleccionarPeriodoNuevo (periodosObj: object) :PeriodoModel {
-    var periodoR : PeriodoModel;
-    if ( periodosObj ===null) { return null;}
-    Object.keys( periodosObj).forEach ( key => {
-      const periodo: PeriodoModel =periodosObj[key];
-      periodo.id=key;
-      if(periodo.estado==="nuevo"){
+  private seleccionarPeriodoNuevo(periodosObj: object): PeriodoModel {
+    var periodoR: PeriodoModel;
+    if (periodosObj === null) { return null; }
+    Object.keys(periodosObj).forEach(key => {
+      const periodo: PeriodoModel = periodosObj[key];
+      periodo.id = key;
+      if (periodo.estado === "nuevo") {
         periodoR = periodo;
       }
     });

@@ -29,8 +29,8 @@ export class PeriodoComponent implements OnInit {
     if(id!=="nuevo"){
       this.periodosService.getPeriodo(id)
       .subscribe( (resp: PeriodoModel)=>{
+        console.log(resp)
         this.periodo=resp;
-        this.periodo.id=id;
       });
     }
     
@@ -63,7 +63,7 @@ export class PeriodoComponent implements OnInit {
     
 
     peticion.subscribe(resp => {
-      
+      console.log(resp)
       Swal.fire({
         title: this.periodo.nombre,
         text: 'Se actualizo correctamente',
