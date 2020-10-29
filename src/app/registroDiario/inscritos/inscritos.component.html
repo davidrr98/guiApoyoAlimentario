@@ -15,28 +15,30 @@
     <div class="col">
         <form (ngSubmit)="guardar( f )" #f="ngForm">
 
-            <div class="form-group">
-                <label class=" label-color-ud">
+
+            <div class="form-group input-group">
+                <div class="label-color-ud input-group-prepend input-group-text">
                     <i class="fa fa-file-signature " aria-hidden="true"></i>
-                    Periodo
-                </label>
+                    <span class="label-color-ud ml-1" id="inputGroup-sizing-default">Periodo</span>
+                </div>
                 <input type="text" [(ngModel)]="fechaActual.periodo" name="periodo" class="form-control input-text-ud" disabled>
             </div>
+
             <!-- [class.is-invalid]="fecha.invalid && fecha.touched" -->
-            <div class="form-group">
-                <label class=" label-color-ud">
+
+            <div class="form-group input-group">
+                <div class="label-color-ud input-group-prepend input-group-text">
                     <i class="fa fa-calendar-day " aria-hidden="true"></i>
-                    Fecha 
-                </label>
+                    <span class="label-color-ud ml-2" id="inputGroup-sizing-default">Fecha</span>
+                </div>
                 <input type="date" placeholder="Fecha a registrar" [(ngModel)]="fechaActual.fechaDia" name="fechaDia" class="form-control input-text-ud " required #fechaDia="ngModel" disabled>
             </div>
 
-            <div class="form-group">
-                <label class=" label-color-ud">
-                    <i class="fas fa-university"></i>
-                    Sede
-                </label>
-                <!--<input type="text" placeholder="Sede en la que se va a registrar" [(ngModel)]="registroBase.sede" name="sede" class="form-control input-text-ud" #descripcion="ngModel">-->
+            <div class="form-group input-group">
+                <div class="label-color-ud input-group-prepend input-group-text">
+                    <i class="fa fa-university " aria-hidden="true"></i>
+                    <span class="label-color-ud ml-2" id="inputGroup-sizing-default">Sede</span>
+                </div>
                 <select class="custom-select input-text-ud" id="inputGroupSelect02">
                     <option selected>Escoger Sede...</option>
                     <option value="1">Inge</option>
@@ -45,18 +47,21 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label class=" label-color-ud">
-                    <i class="fas fa-barcode"></i>
-                    Codigo estudiante
-                </label>
-                <input type="text" placeholder="Descripcion de la fecha" [(ngModel)]="registroBase.codigo" name="codigo" class="form-control input-text-ud" #descripcion="ngModel">
+            <div class="form-group input-group">
+                <div class="label-color-ud input-group-prepend input-group-text mt-1n">
+                    <i class="fa fa-barcode mt-2n mr-1" aria-hidden="true"></i>
+                    <span class="label-color-ud ml-1" id="inputGroup-sizing-default"> 
+                        Codigo
+                        <br>
+                        Estudiante</span>
+                </div>
+                <input type="text" placeholder="Codigo del Estudiante" [(ngModel)]="registroBase.codigo" name="codigo" class="form-control input-text-ud mt-3" #descripcion="ngModel">
             </div>
 
             <hr>
             <div class="form-group">
                 <button type="submit" class="btn btn-warning btn-block">
-                    <i class="fas fa-save    "></i>
+                    <i class="fas fa-save mr-1"></i>
                     Guardar
                 </button>
 
