@@ -17,10 +17,11 @@
     <div class="col">
         <form (ngSubmit)="guardar( f )" #f="ngForm">
 
+
             <div class="form-group input-group">
                 <div class="label-color-ud input-group-prepend input-group-text">
-                    <i class="fa fa-file-signature mr-1" aria-hidden="true"></i>
-                    <span class="label-color-ud " id="inputGroup-sizing-default">Periodo</span>
+                    <i class="fa fa-file-signature " aria-hidden="true"></i>
+                    <span class="label-color-ud ml-1" id="inputGroup-sizing-default">Periodo</span>
                 </div>
                 <input type="text" [(ngModel)]="fechaActual.periodo" name="periodo" class="form-control input-text-ud" disabled>
             </div>
@@ -28,36 +29,44 @@
             <!-- [class.is-invalid]="fecha.invalid && fecha.touched" -->
             <div class="form-group input-group">
                 <div class="label-color-ud input-group-prepend input-group-text">
-                    <i class="fa fa-calendar-day mr-1" aria-hidden="true"></i>
-                    <span class="label-color-ud " id="inputGroup-sizing-default">Fecha</span>
+                    <i class="fa fa-calendar-day " aria-hidden="true"></i>
+                    <span class="label-color-ud ml-2" id="inputGroup-sizing-default">Fecha</span>
                 </div>
                 <input type="date" placeholder="Fecha a registrar" [(ngModel)]="fechaActual.fechaDia" name="fechaDia" class="form-control input-text-ud " required #fechaDia="ngModel" disabled>
             </div>
 
             <div class="form-group input-group">
                 <div class="label-color-ud input-group-prepend input-group-text">
-                    <i class="fas fa-university mr-1"></i>
-                    <span class="label-color-ud " id="inputGroup-sizing-default">Sede</span>
+                    <i class="fa fa-university " aria-hidden="true"></i>
+                    <span class="label-color-ud ml-2" id="inputGroup-sizing-default">Sede</span>
                 </div>
                 <select class="form-control custom-select input-text-ud" name="sede" [disabled]="sedesAccesso.length === 0" [class.is-invalid]="sede.invalid && sede.touched" [ngModel]="registroBase.sede" nombre="sede" required placeholder="Sede" required #sede="ngModel">
                     <option *ngFor="let sede of sedesAccesso" [value]="sede.id">{{sede.nombre}}</option>
-                  </select>
+                </select>
             </div>
-            <small *ngIf="sede.invalid && sede.touched" class="form-text text-danger mt-n3 mb-2">Tienes que seleccionar un sede</small>
-            <small *ngIf="sedesAccesso.length === 0" class="form-text text-danger mt-n3 mb-2">No hay sedes disponibles</small>
+            <div class="small-ud-sede">
+                <small *ngIf="sede.invalid && sede.touched" class="form-text text-danger mt-n3 mb-2">Tienes que seleccionar un sede</small>
+                <small *ngIf="sedesAccesso.length === 0" class="form-text text-danger mt-n3 mb-2">No hay sedes disponibles</small>
+            </div>
 
             <div class="form-group input-group">
-                <div class="label-color-ud input-group-prepend input-group-text">
-                    <i class="fas fa-barcode mr-1"></i>
-                    <span class="label-color-ud " id="inputGroup-sizing-default">Codigo</span>
+                <div class="label-color-ud input-group-prepend input-group-text mt-1n">
+                    <i class="fa fa-barcode mt-2n mr-1" aria-hidden="true"></i>
+                    <span class="label-color-ud ml-1" id="inputGroup-sizing-default"> 
+                        Codigo
+                        <br>
+                        Estudiante
+                    </span>
                 </div>
-                <input class="form-control input-text-ud" type="number" name="codigo" placeholder="Codigo estudiante" [(ngModel)]="registroBase.codigo" #codigo="ngModel" [class.is-invalid]="codigo.invalid && codigo.touched" pattern="[0-9]{11}" required>
+                <input class="form-control input-text-ud mt-3" type="number" name="codigo" placeholder="Codigo estudiante" [(ngModel)]="registroBase.codigo" #codigo="ngModel" [class.is-invalid]="codigo.invalid && codigo.touched" pattern="[0-9]{11}" required>
             </div>
-
+            <div class="small-ud">
+                <small *ngIf="codigo.invalid && codigo.touched " class="form-text text-danger mt-n4 mb-2">Tienes que ingresar un codigo correcto</small>
+            </div>
             <hr>
             <div class="form-group">
                 <button type="submit" class="btn btn-warning btn-block">
-                    <i class="fas fa-save    "></i>
+                    <i class="fas fa-save mr-1"></i>
                     Guardar
                 </button>
 

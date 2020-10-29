@@ -47,7 +47,6 @@
     color: #4c1818;
     font-weight: bold;
     background-color: white;
-    border-color: #4c1818;
     margin-right: 2px;
 }
 
@@ -84,14 +83,14 @@
 }
 
 .student-icon {
-    color: #d6ddfd;
-    background-color: #1a38be;
-    border-color: #1a38be;
+    color: #eef1ff;
+    background-color: #2039aa;
+    border-color: #2039aa;
 }
 
 .student-icon:hover {
     color: #d6ddfd;
-    background: #18276b;
+    background: #192766;
 }
 
 
@@ -99,28 +98,28 @@
 
 .init-icon {
     color: #f2fff2;
-    background-color: #307030;
-    border-color: #2c552c;
+    background-color: #236123;
+    border-color: #236123;
 }
 
 .init-icon:hover {
     color: #f2fff2;
-    background: #2c552c;
+    background: #1b441b;
 }
 
 .edit-icon {
-    color: #fff3cd;
-    background-color: #be951a;
-    border-color: #be951a;
+    color: #fcfcfc;
+    background-color: #978234d7;
+    border-color: #978234d7;
 }
 
 .edit-icon:hover {
-    color: #fff3cd;
-    background: #a1801b;
+    color: #faf7e9;
+    background: #746531d7;
 }
 
 .delete-icon {
-    color: #ffe6e6;
+    color: #fdf2f2;
     background-color: #7a1616;
     border-color: #7a1616;
 }
