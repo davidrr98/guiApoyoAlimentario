@@ -35,7 +35,6 @@ export class InscritosComponent implements OnInit {
     private router: Router, private route: ActivatedRoute,) { }
 
   async ngOnInit() {
-    console.log("init")
     this.inscritos = true;
     let tipo = this.route.snapshot.paramMap.get('tipo');
     if (tipo === "no-inscritos") {
@@ -45,7 +44,7 @@ export class InscritosComponent implements OnInit {
         this.inscritos = true;
       }
     }
-    console.log(this.inscritos);
+
 
     this.fechasService.getFechas()
       .subscribe(async resp => {
@@ -92,8 +91,6 @@ export class InscritosComponent implements OnInit {
       return;
     }
     this.registroBase.sede = form.value['sede'];
-    console.log(form);
-    console.log(this.registroBase);
 
     Swal.fire({
       title: 'Espere',

@@ -4,19 +4,17 @@
 <p>El archivo debe estar exportado en formato csv</p>
 <form>
     <div class="form-group custom-file bg-online-ud">
-        <input type="file" class="form-control input-text-ud" >
+        <input name="inscripcionesCSV" type="file" placeholder="Upload file" class="form-control input-text-ud" accept=".csv" (change)="cargar($event)">
     </div>
     <br>
     <br>
-    
+
     <div class="form-group">
-        <button type="button" (click)="guardar()" class="btn btn-warning btn-block form-control">
+        <button class="btn btn-warning btn-block form-control" (click)="upload()">
            <i class="fa fa-upload mr-2" aria-hidden="true"></i>
             Cargar datos
         </button>
-    
+
     </div>
 </form>
 {{ periodo | json }}
-
-

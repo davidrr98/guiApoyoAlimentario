@@ -5,8 +5,6 @@ export class FechaModel{
     estado: string;
     descripcion: string;
    
-    constructor(){
-        console.log("creando fecha")
-        
+    constructor(){       
     }
 }

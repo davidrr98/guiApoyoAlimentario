@@ -22,8 +22,6 @@ export class PeriodosService {
 
   }
   actualizar(periodo: PeriodoModel) {
-    console.log("se encontro a actualizar");
-    console.log(periodo);
     const periodoTemp = {
       ...periodo
     };
@@ -76,7 +74,6 @@ export class PeriodosService {
     if (periodosObj === null) { return null; }
     Object.keys(periodosObj).forEach(key => {
       const periodo: PeriodoModel = periodosObj[key];
-      periodo.id = key;
       if (periodo.estado === "nuevo") {
         periodoR = periodo;
       }

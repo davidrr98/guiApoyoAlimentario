@@ -22,7 +22,6 @@ export class SedesService {
   }
 
   private crearArreglo(sedesObj: object){
-    console.log(sedesObj);
     const sedes: SedeModel [] = [];
 
     if ( sedesObj ===null) { return [];}
@@ -30,9 +29,7 @@ export class SedesService {
     Object.keys( sedesObj).forEach ( key => {
       const sede: SedeModel =sedesObj[key];
       if(sede){
-      console.log(sede);
       sede.id=key;
-
       sedes.push(sede);}
     });
 
